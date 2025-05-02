@@ -70,3 +70,12 @@ Inside WSL, download Git and other essential utilities:
 sudo apt update && sudo apt upgrade -y
 sudo apt install git build-essential cmake curl unzip wget -y
 ```
+
+Install Conda:
+
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+```
+
+For the initialization options, choose `YES`
