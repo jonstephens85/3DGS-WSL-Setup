@@ -79,3 +79,35 @@ bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
 For the initialization options, choose `YES`
+
+## Step 4: Install CUDA Toolkit
+
+For this tutorial, we suggest installed v12.6. You can have multiple installs. See Cheat Sheet for how to manage multiple toolkits.
+
+For additional toolkit version, check out [NVIDIA's Archive](https://developer.nvidia.com/cuda-toolkit-archive)
+
+```
+wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-wsl-ubuntu.pin
+sudo mv cuda-wsl-ubuntu.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/12.6.0/local_installers/cuda-repo-wsl-ubuntu-12-6-local_12.6.0-1_amd64.deb
+sudo dpkg -i cuda-repo-wsl-ubuntu-12-6-local_12.6.0-1_amd64.deb
+sudo cp /var/cuda-repo-wsl-ubuntu-12-6-local/cuda-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get -y install cuda-toolkit-12-6
+```
+
+After installing the CUDA Toolkit in WSL2, you need to add the CUDA binaries to your system's PATH and the libraries to your LD_LIBRARY_PATH. Here's how to do that for CUDA 12.6:
+
+```
+export PATH=/usr/local/cuda-12.6/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LD_LIBRARY_PATH
+source ~/.bashrc
+```
+
+Now confirm that CUDA Toolkit is installed:
+```
+nvcc --version
+```
+
+
+
