@@ -6,13 +6,14 @@ This guide walks through setting up a WSL2-based development environment for 3D 
 
 - [Why WSL for 3DGS](#why-wsl-for-3dgs)
 - [System Requirements](#system-requirements)
-- [Step 1: Install WSL and Ubuntu](#step-1-install-wsl-and-ubuntu)
-- [Step 2: Configure WSL for Performance](#step-2-configure-wsl-for-performance)
-- [Step 3: Install Required Dependencies](#step-3-install-required-dependencies)
-- [Step 4: Set Up CUDA Toolkit](#step-4-set-up-cuda-toolkit)
-- [Step 5: Clone and Run a 3DGS Project](#step-5-clone-and-run-a-3dgs-project)
-- [Step 6: Handling Older CUDA Versions](#step-6-handling-older-cuda-versions)
+- [Installation Steps](#installation-steps)
+  - [1. Install WSL and Ubuntu](#1-install-wsl-and-ubuntu)
+  - [2. Configure WSL for Performance](#2-configure-wsl-for-performance)
+  - [3. Install Required Dependencies](#3-install-required-dependencies)
+  - [4. Install CUDA Toolkit](#4-install-cuda-toolkit)
 - [Tips & Troubleshooting](#tips--troubleshooting)
+  - [Handling Multiple CUDA Versions](handling-multiple-cuda-versions)
+  - [Additional Tips](additional-tips)
 
 ---
 
@@ -31,7 +32,9 @@ Many 3DGS projects rely on Linux-based tooling such as COLMAP and PyTorch with G
 
 ---
 
-## Step 1: Install WSL and Ubuntu
+## Installation Steps
+
+### 1. Install WSL and Ubuntu
 
 Install WSL with Ubuntu from Command Prompt or PowerShell:
 
@@ -45,7 +48,7 @@ Or install Ubuntu manually:
 wsl --install -d Ubuntu-22.04
 ```
 
-## Step 2: Configure WSL for Performance
+### 2. Configure WSL for Performance
 
 Edit or create a `.wslconfig` file at `C:\Users\<YourUsername>\.wslconfig:`   # This still needs editing
 
@@ -62,7 +65,7 @@ Restart WSL after making changes:
 wsl --shutdown
 ```
 
-## Step 3: Install Required Dependencies
+### 3. Install Required Dependencies
 
 Inside WSL, download Git and other essential utilities:
 
@@ -80,7 +83,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 
 For the initialization options, choose `YES`
 
-## Step 4: Install CUDA Toolkit
+## 4. Install CUDA Toolkit
 
 For this tutorial, we suggest installed v12.6. You can have multiple installs. See Cheat Sheet for how to manage multiple toolkits.
 
@@ -109,9 +112,11 @@ Now confirm that CUDA Toolkit is installed:
 nvcc --version
 ```
 
+---
+
 ## Tips and Troubleshooting
 
-### Handling Multiple CUDA Versions (e.g. 11.8 and 12.6)
+### Handling Multiple CUDA Versions
 Some projects require older CUDA versions. You can install multiple versions and switch manually.
 
 Example: Install CUDA 11.8 inside WSL
@@ -131,7 +136,7 @@ export PATH=/usr/local/cuda-11.8/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH
 ```
 
-## Additional Tips:
+## Additional Tips
 - Store project files in WSL (`/home`) not `/mnt/c` for better performance.
 - Use `nvidia-smi` in WSL to verify GPU is recognized
 - Check CUDA Toolkit version within an environment with `nvcc --version`
