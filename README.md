@@ -132,7 +132,10 @@ export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH
 ```
 
 ## Additional Tips:
-Store project files in WSL (`/home`) not `/mnt/c` for better performance.
+- Store project files in WSL (`/home`) not `/mnt/c` for better performance.
+- Use `nvidia-smi` in WSL to verify GPU is recognized
+- Check CUDA Toolkit version within an environment with `nvcc --version`
+
 
 
 
