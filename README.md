@@ -109,5 +109,30 @@ Now confirm that CUDA Toolkit is installed:
 nvcc --version
 ```
 
+## Tips and Troubleshooting
+
+### Handling Multiple CUDA Versions (e.g. 11.8 and 12.6)
+Some projects require older CUDA versions. You can install multiple versions and switch manually.
+
+Example: Install CUDA 11.8 inside WSL
+```
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda-repo-ubuntu2004-11-8-local_11.8.0-520.61.05-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2004-11-8-local_11.8.0-520.61.05-1_amd64.deb
+sudo apt-key add /var/cuda-repo-ubuntu2004-11-8-local/7fa2af80.pub
+sudo apt update
+sudo apt install cuda-toolkit-11-8
+```
+
+Next, ensure your project uses itL
+```
+export PATH=/usr/local/cuda-11.8/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH
+```
+
+## Additional Tips:
+Store project files in WSL (`/home`) not `/mnt/c` for better performance.
+
 
 
