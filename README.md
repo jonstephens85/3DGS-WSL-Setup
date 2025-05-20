@@ -12,8 +12,8 @@ This guide walks through setting up a WSL2-based development environment for 3D 
   - [3. Install Required Dependencies](#3-install-required-dependencies)
   - [4. Install CUDA Toolkit](#4-install-cuda-toolkit)
 - [Tips and Troubleshooting](#tips-and-troubleshooting)
-  - [Handling Multiple CUDA Versions](handling-multiple-cuda-versions)
-  - [Additional Tips](additional-tips)
+  - [Handling Multiple CUDA Versions](#handling-multiple-cuda-versions)
+  - [Additional Tips](#additional-tips)
 
 ---
 
