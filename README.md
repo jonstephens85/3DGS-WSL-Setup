@@ -136,7 +136,45 @@ export PATH=/usr/local/cuda-11.8/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH
 ```
 
-## Additional Tips
+### Determine Which PyTorch + CUDA Version to Install
+Some repositories require a specific combination of **PyTorch** and **CUDA Toolkit**. You can usually find this in the README or installation instructions, often in a line like:
+
+> "Tested with PyTorch 1.13.1+cu117 and 2.5.0+cu124"
+
+To choose the right PyTorch version for your setup:
+
+#### 1. Check the PyTorch + CUDA compatibility matrix
+- Visit the official [PyTorch previous versions page](https://pytorch.org/get-started/previous-versions/)
+- Match the listed **PyTorch version** with your desired **CUDA version**
+- Use `pip` commands from the matrix
+
+#### 2. If the project specifies a tested PyTorch version
+Install PyTorch **before other dependencies** to avoid version conflicts:
+
+```bash
+# Example: PyTorch 2.5.0 with CUDA 12.4 via pip
+pip install torch==2.5.0 torchvision==0.20.0+cu124 --index-url https://download.pytorch.org/whl/cu124
+```
+Or
+```
+# Example: PyTorch 1.13.1 with CUDA 11.7 via pip
+pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 --index-url https://download.pytorch.org/whl/cu117
+```
+
+#### 3. Use `torch.version.cuda` to verify
+After installation, run the following command to confirm the PyTorch and CUDA versions:
+
+```
+python -c "import torch; print(torch.__version__, torch.version.cuda, torch.cuda.is_available())"
+```
+You should see output like:
+```
+2.5.0 12.4 True
+```
+This confirms that PyTorch is installed correctly and that it can access the GPU.
+
+
+### Additional Tips
 - Store project files in WSL (`/home`) not `/mnt/c` for better performance.
 - Use `nvidia-smi` in WSL to verify GPU is recognized
 - Check CUDA Toolkit version within an environment with `nvcc --version`
