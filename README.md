@@ -13,6 +13,7 @@ This guide walks through setting up a WSL2-based development environment for 3D 
   - [4. Install CUDA Toolkit](#4-install-cuda-toolkit)
 - [Tips and Troubleshooting](#tips-and-troubleshooting)
   - [Handling Multiple CUDA Versions](#handling-multiple-cuda-versions)
+  - [Determine Which PyTorch + CUDA Version to Install](#determine-which-pytorch--cuda-version-to-install)
   - [Additional Tips](#additional-tips)
 
 ---
