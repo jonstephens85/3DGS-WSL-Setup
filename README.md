@@ -55,13 +55,15 @@ Edit or create a `.wslconfig` file at `C:\Users\<YourUsername>\.wslconfig:`   # 
 ```bash
 [wsl2]
 memory=32GB
-processors=8
 swap=64GB
 ```
+_Note: choose your system memory total for `memory=`. FOr example, if you have 128 GB of RAM installed on your PC, input `memory=128GB`._
 
 Restart WSL after making changes:
 
-```bash
+Close your command prompt window and open a new Windows command prompt window. Then type:
+
+```
 wsl --shutdown
 ```
 
@@ -69,14 +71,14 @@ wsl --shutdown
 
 Inside WSL, download Git and other essential utilities:
 
-```bash
+```
 sudo apt update && sudo apt upgrade -y
 sudo apt install git build-essential cmake curl unzip wget -y
 ```
 
 Install Conda:
 
-```bash
+```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
