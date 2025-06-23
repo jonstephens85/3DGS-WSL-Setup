@@ -102,11 +102,15 @@ sudo apt-get update
 sudo apt-get -y install cuda-toolkit-12-6
 ```
 
-After installing the CUDA Toolkit in WSL2, you need to add the CUDA binaries to your system's PATH and the libraries to your LD_LIBRARY_PATH. Here's how to do that for CUDA 12.6:
+After installing the CUDA Toolkit 12.6 in WSL2, you need to configure your system to recognize and use it. This involves creating a symbolic link to set CUDA 12.6 as the default version and updating your environment variables so your shell can locate the CUDA tools and libraries.
 
+By exporting the PATH and LD_LIBRARY_PATH variables in your ~/.bashrc, you ensure that these settings are applied automatically every time you open a terminal, making CUDA 12.6 available in all future sessions without needing to reconfigure it manually.
+
+Here’s how to do that:
 ```
-export PATH=/usr/local/cuda-12.6/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LD_LIBRARY_PATH
+sudo ln -sfn /usr/local/cuda-12.6 /usr/local/cuda
+echo -e '\nexport PATH=/usr/local/cuda/bin:$PATH' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -114,6 +118,15 @@ Now confirm that CUDA Toolkit is installed:
 ```
 nvcc --version
 ```
+or 
+```
+/usr/local/cuda/bin/nvcc --version
+```
+You should see output like:
+```
+V12.6.0
+```
+This confirms that CUDA Toolkit 12.6 is installed and available for use.
 
 ---
 
